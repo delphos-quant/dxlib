@@ -19,6 +19,8 @@ jobs:
         pip install
         build
         --user
+    - name: Install Python development tools
+      run: sudo apt-get install -y python3-distutils
     - name: Install project dependencies
       run: python3 -m pip install -r requirements.txt
     - name: Build a binary wheel and a source tarball
