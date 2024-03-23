@@ -101,7 +101,7 @@ class InternalInterface(ABC):
                             print("Connection closed unexpectedly")
                             break
                 print("Connection closed")
-            except (websockets.ConnectionClosed, ConnectionRefusedError) as e:
+            except (websockets.ConnectionClosed, ConnectionRefusedError, ValueError) as e:
                 print(f"Failed to connect to {url}: {e}")
                 attempt += 1
                 if attempt <= retries:
