@@ -3,11 +3,12 @@ import time
 import unittest
 
 import dxlib as dx
+import dxlib.interfaces.external.yfinance as yfinance
 
 
 class TestYFinanceApi(unittest.TestCase):
     def setUp(self) -> None:
-        self.api = dx.interfaces.YFinanceAPI()
+        self.api = yfinance.YFinanceAPI()
 
     def test_version(self):
         self.assertEqual(self.api.version, "1.0")
@@ -36,7 +37,7 @@ class TestYFinanceInterface(unittest.TestCase):
         logger = dx.DebugLogger()
         cls.server = dx.servers.HTTPServer(logger=logger)
         cls.websocket = dx.servers.WebsocketServer(logger=logger)
-        cls.interface = dx.interfaces.MarketInterface(dx.YFinanceAPI(), host=cls.server.host)
+        cls.interface = dx.interfaces.MarketInterface(yfinance.YFinanceAPI(), host=cls.server.host)
         cls.server.add_interface(cls.interface)
         cls.websocket.add_interface(cls.interface)
 

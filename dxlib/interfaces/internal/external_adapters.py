@@ -2,12 +2,13 @@ from datetime import datetime
 from typing import List, AsyncGenerator
 
 from .internal_interface import InternalInterface
+from ..external import MarketApi
 from ..servers.endpoint import Endpoint, Method
 from ... import History
 
 
 class MarketInterface(InternalInterface):
-    def __init__(self, market_api=None, host: str = None, headers: dict = None):
+    def __init__(self, market_api: MarketApi = None, host: str = None, headers: dict = None):
         super().__init__(host, headers)
         if market_api is None and host is None:
             raise ValueError("Executor or URL must be provided")

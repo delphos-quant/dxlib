@@ -1,6 +1,6 @@
 from abc import ABC
 from datetime import datetime
-from typing import List, Dict
+from typing import List, Dict, AsyncGenerator
 
 import pandas as pd
 
@@ -48,6 +48,9 @@ class MarketApi(ExternalInterface):
             interval="1m",
             cache=False,
     ) -> History:
+        raise NotImplementedError
+
+    def quote_stream(self, *args, **kwargs) -> AsyncGenerator:
         raise NotImplementedError
 
 
